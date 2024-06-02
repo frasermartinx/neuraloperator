@@ -11,7 +11,7 @@ to train a Tensorized Fourier-Neural Operator
 import torch
 import matplotlib.pyplot as plt
 import sys
-from neuralop.models import TFNO
+from neuralop.models.fno import TFNO
 from neuralop import Trainer
 from neuralop.training import CheckpointCallback
 from neuralop.datasets import load_darcy_flow_small
@@ -105,7 +105,7 @@ trainer = Trainer(model=model, n_epochs=20,
                   data_processor=data_processor,
                   callbacks=[
                     CheckpointCallback(save_dir='./new_checkpoints',
-                                            resume_from_dir='./checkpoints/ep_10')
+                                            resume_from_dir='./checkpoints')
                         ],             
                   wandb_log=False,
                   log_test_interval=3,
@@ -118,3 +118,4 @@ trainer.train(train_loader=train_loader,
               scheduler=scheduler, 
               regularizer=False, 
               training_loss=train_loss)
+# %%
