@@ -143,4 +143,4 @@ for index in range(3):
 
 fig.suptitle('Inputs, ground-truth output and prediction.', y=0.98)
 plt.tight_layout()
-fig.show()
+plt.savefig("UNO.jpg")
