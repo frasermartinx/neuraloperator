@@ -303,7 +303,9 @@ class FNOBlocks(nn.Module):
         if self.norm is not None:
             x = self.norm[self.n_norms * index](x)
 
+        #linear skip connection does a 1dconv flattened, ie a linear transformation
         x_skip_fno = self.fno_skips[index](x)
+        #transform returns the input, but at required dimension for addition with the other bit
         x_skip_fno = self.convs[index].transform(x_skip_fno, output_shape=output_shape)
 
         if self.mlp is not None:
